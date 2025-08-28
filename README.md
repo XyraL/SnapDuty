@@ -1,4 +1,4 @@
-# 🚨 SnapDuty
+# 🚨 SnapDuty (REVAMPED from SnapsCustoms)
 A lightweight and modern **duty tracking + blip system** for **FiveM QBCore servers**.  
 Built to keep PD/EMS/FIB organized with real-time duty status, map visibility, and time tracking.
 
