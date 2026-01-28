@@ -23,7 +23,6 @@ Built to keep PD/EMS/FIB organized with real-time duty status, map visibility, a
 
 - ⚡ **Optimized & Lightweight**  
   - Designed for performance.  
-  - Server + client configs automatically load.  
 
 ---
 
