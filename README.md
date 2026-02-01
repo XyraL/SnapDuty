@@ -13,9 +13,9 @@ Built to keep PD/EMS/FIB organized with real-time duty status, map visibility, a
   - Configurable blip icons + departments.  
   - Removes blips when going AFK or disconnecting.  
 
-- ⏱️ **Duty Time Tracking**  
-  - `/dutytime` command to check your total duty time.  
-  - AFK detection prevents time farming.  
+- ⏱️ **UI Driven**  
+  - `/SDHC` command for any High Command to take control of there .  
+  - `/Duty` for all personnel to go on duty with 0 additonal needs
 
 - 👮 **Role Permissions**  
   - Restrict commands to PD roles only.  
