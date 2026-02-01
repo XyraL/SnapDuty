@@ -52,9 +52,6 @@ local function setVersion(v, cb)
     ]], { tostring(v) }, cb)
 end
 
--- NOTE: Duty time tracking tables have been removed for now.
--- We keep migrations focused on roster + audit only.
-
 local function createRosterTables(cb)
     DB.exec([[
         CREATE TABLE IF NOT EXISTS snapduty_roster (
@@ -92,10 +89,6 @@ local function createRosterTables(cb)
 end
 
 CreateThread(function()
-    -- IMPORTANT:
-    -- Some servers may have an older/partial schema_version set (or tables deleted) from
-    -- previous iterations. Since all CREATE statements are IF NOT EXISTS, it is safe to
-    -- always ensure the required tables exist on every start.
     ensureMeta(function()
         getVersion(function(v)
             createRosterTables(function()
