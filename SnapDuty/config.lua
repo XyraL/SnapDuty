@@ -1,7 +1,6 @@
 Config = {}
 
--- SnapDuty 2.1 (Live Roster + High Command UI)
--- No per-person permissions in config. Only department styling + job mapping lives here.
+-- SnapDuty 2.0.0 (Live Roster + High Command UI)
 
 Config.Departments = {
     sast = {
@@ -12,7 +11,7 @@ Config.Departments = {
         shortRange = true,
         webhook = "https://discord.com/api/webhooks/1391877203859603506/8UkZV8-0kK28QXneZYPCNmeBVMLUTJtHJcyJeCarZZgU_LZDFVSwN5FTaBZX8nb05LVE",
         thumbnail = "https://example.com/images/police.png",
-        jobNames = { "sast" } -- QBCore jobs that should map to this department
+        jobNames = { "sast" }
     },
     fib = {
         label = "FIB",
@@ -52,14 +51,11 @@ Config.DutyCommand = "duty"
 -- Command to open High Command panel
 Config.HCCommand = "sdhc"
 
--- QBCore permissions that are considered "Server Staff" (bootstrap access).
+-- QBCore permissions that are considered "Server Staff".
 -- These are the same strings you use with qb-core permissions (.admin / .god).
 Config.StaffPerms = { "admin", "god" }
 
--- If someone is in multiple departments and we can't infer it from job, show a selection UI.
 Config.RequireDeptSelectionWhenAmbiguous = true
 
 -- If someone has no callsign yet, prompt them the first time they go on duty.
 Config.RequireCallsign = true
-
-print("[SnapDuty] config.lua successfully loaded")
