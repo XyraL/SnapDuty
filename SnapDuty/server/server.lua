@@ -7,7 +7,6 @@ local lastBroadcast = 0
 local USING_OX = (GetResourceState('oxmysql') == 'started')
 local DB = {}
 -- Which departments are allowed to see duty blips at all
--- Which departments are allowed to see duty blips
 local BLIP_VIEW_DEPTS = {
     sast = true,
     fib  = true,
@@ -183,14 +182,12 @@ end
 -- ==========================================================
 
 lib.callback.register('snapduty:client:selectDept', function(_, allowed)
-    -- registered client-side; this is placeholder so lib knows the name exists
 end)
 
 lib.callback.register('snapduty:client:promptCallsign', function(_, current)
 end)
 
 lib.callback.register('snapduty:server:canSeeDutyBlips', function(src)
-    -- reuse your server-side canSeeDutyBlips() function
     return canSeeDutyBlips(src) == true
 end)
 
@@ -227,15 +224,14 @@ local function setQBJobDuty(src, state)
         return
     end
 
-    -- Fallback: some cores only update via SetJob (re-apply same job/grade with duty state)
+    -- Fallback
     local job = Player.PlayerData.job
     if job and Player.Functions and Player.Functions.SetJob then
-        -- Some QBCore builds: SetJob(name, grade, duty)
         Player.Functions.SetJob(job.name, job.grade.level or job.grade, state)
         return
     end
 
-    -- Last-resort: set the metadata and trigger update (rarely needed)
+    -- Last-resort
     if Player.PlayerData and Player.PlayerData.job then
         Player.PlayerData.job.onduty = state
         TriggerClientEvent('QBCore:Client:OnJobUpdate', src, Player.PlayerData.job)
@@ -283,7 +279,6 @@ local function toggleDuty(src)
             end
         end
 
-        -- If still ambiguous, always prompt the player to pick (and remember it)
         if not dept and #allowedDepts > 1 then
             dept = lib.callback.await('snapduty:client:selectDept', src, allowedDepts)
             if dept and SnapDuty and SnapDuty.Roster and SnapDuty.Roster.SetPrimaryDept then
