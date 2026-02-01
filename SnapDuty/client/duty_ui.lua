@@ -24,7 +24,6 @@ lib.callback.register('snapduty:client:selectDept', function(allowedDepts)
 
     lib.showContext('snapduty_select_dept')
 
-    -- ox_lib context can't directly "return" selection, so we use a small selection dialog instead
     -- fallback: inputSelect
     local input = lib.inputDialog('Select Department', {
         { type = 'select', label = 'Department', options = (function()
