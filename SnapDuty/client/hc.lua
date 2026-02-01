@@ -16,7 +16,6 @@ local function deptLabel(dept)
     return tostring(dept)
 end
 
--- NEW: richer access state (Admin + HC safe)
 local function getMyScope()
     return lib.callback.await('snapduty:server:getMyScope', false)
 end
@@ -55,7 +54,7 @@ local function openAudit(dept, returnMenuId)
 end
 
 -- =========================
--- Member Actions (inside roster)
+-- Member Actions
 -- =========================
 local function openMemberActions(dept, member, returnToRosterMenuId, returnMenuIdForRoster)
     local menuId = ('snapduty_member_actions_%s_%s'):format(dept, member.citizenid)
@@ -283,7 +282,6 @@ local function openHCMode(hcDept, isStaff)
         }
     }
 
-    -- IMPORTANT: add staff tools BEFORE registerContext
     if isStaff then
         options[#options + 1] = {
             title = 'Staff: High Command Access',
